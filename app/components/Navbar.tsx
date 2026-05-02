@@ -24,7 +24,6 @@ export default function Navbar() {
         window.requestAnimationFrame(() => {
           setScrolled(window.scrollY > 40);
 
-          // scroll spy (active section)
           let current = "home";
           LINKS.forEach(({ id }) => {
             const el = document.getElementById(id);
@@ -55,29 +54,31 @@ export default function Navbar() {
       <div
         className={`
           pointer-events-auto w-[96%] max-w-7xl
-          transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-          ${scrolled ? "mt-3" : "mt-0"}
+          transition-all duration-500
+          ${scrolled ? "mt-3" : "mt-2"}
         `}
       >
         <div
           className={`
             flex items-center justify-between
-            px-5 md:px-7
-            transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+            px-4 md:px-7
+            transition-all duration-500
             ${
               scrolled
-                ? "py-2 bg-white/80 backdrop-blur-2xl rounded-full border border-black/10 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
-                : "py-4 bg-transparent"
+                ? "py-2 bg-white/80 backdrop-blur-2xl rounded-full border border-black/10 shadow-lg"
+                : "py-3 bg-white/60 backdrop-blur-xl rounded-full"
             }
           `}
         >
           {/* LOGO */}
           <button
             onClick={() => goTo("home")}
-            className="flex items-center gap-2 text-black font-medium"
+            className="flex items-center gap-2 text-black font-semibold"
           >
-            <img src="/logo.png" className="w-5 h-5" />
-            <span className="hidden sm:block text-sm tracking-wide">
+            <img src="/logo.png" className="w-7 h-7 md:w-6 md:h-6" />
+
+            {/* 🔥 SEKARANG MUNCUL DI MOBILE */}
+            <span className="text-sm md:text-base tracking-wide">
               Galeri Ukir
             </span>
           </button>
@@ -100,7 +101,6 @@ export default function Navbar() {
                   {l.label}
                 </span>
 
-                {/* underline animasi */}
                 <span
                   className={`
                     absolute left-0 -bottom-1 h-[2px] bg-[#9EFF00]
@@ -116,17 +116,17 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="flex items-center gap-3">
-            {/* ORDER BUTTON (GREEN GLOW) */}
+          {/* RIGHT */}
+          <div className="flex items-center gap-2">
+            {/* ORDER */}
             <a
               href={waLink}
               target="_blank"
               className="
-                text-sm px-5 py-1.5 rounded-full font-medium
+                text-xs md:text-sm px-4 md:px-5 py-2 rounded-full font-medium
                 bg-[#9EFF00] text-black
-                shadow-[0_0_20px_rgba(158,255,0,0.5)]
-                hover:shadow-[0_0_35px_rgba(158,255,0,0.8)]
+                shadow-[0_0_15px_rgba(158,255,0,0.5)]
+                hover:shadow-[0_0_30px_rgba(158,255,0,0.8)]
                 hover:scale-105
                 transition-all duration-300
               "
@@ -134,7 +134,7 @@ export default function Navbar() {
               Order
             </a>
 
-            {/* MOBILE TOGGLE */}
+            {/* MENU MOBILE */}
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden text-black text-xl"
@@ -148,7 +148,7 @@ export default function Navbar() {
         <div
           className={`
             md:hidden overflow-hidden
-            transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
+            transition-all duration-500
             ${open ? "max-h-60 mt-3" : "max-h-0"}
           `}
         >
