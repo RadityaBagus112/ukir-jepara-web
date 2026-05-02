@@ -648,14 +648,14 @@ export default function Page() {
             <div className="mb-6">
               <p className="text-sm text-gray-500">Alamat</p>
               <p className="font-medium">
-                Desa Mulyoharjo, Jepara, Jawa Tengah
+                Desa Karanglo, Cilongok, Banyumas, Jawa Tengah
               </p>
             </div>
 
             {/* BUTTONS */}
             <div className="flex gap-4 flex-wrap">
               <a
-                href="https://maps.google.com"
+                href="https://maps.app.goo.gl/g3P3U7ZJGcpgYezE7"
                 target="_blank"
                 className="px-5 py-3 bg-black text-white rounded-full hover:scale-105 transition"
               >
