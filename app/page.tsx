@@ -53,7 +53,7 @@ export default function Page() {
   <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
 
   {/* CONTENT */}
-  <div className="relative min-h-screen flex items-center pt-120 md:pt-0">
+  <div className="relative min-h-screen flex items-end pb-20 px-6 md:items-center md:pb-0 md:px-10">
     <div className="max-w-xl space-y-6">
 
       <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white animate-fadeUp">
