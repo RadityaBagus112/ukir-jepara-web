@@ -53,7 +53,7 @@ export default function Page() {
   <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
 
   {/* CONTENT */}
-  <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+  <div className="relative min-h-screen flex items-center pt-120 md:pt-0">
     <div className="max-w-xl space-y-6">
 
       <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white animate-fadeUp">
@@ -81,7 +81,7 @@ export default function Page() {
         </a>
 
         <a
-          href="#kontak"
+          href={waLink}
           className="
             border border-white/40 text-white px-6 py-3 rounded-full
             hover:bg-white hover:text-black transition
@@ -385,7 +385,7 @@ export default function Page() {
             transition duration-500
           ">
             <a
-              href="https://wa.me/628xxxx"
+              href="https://wa.me/62859126469320"
               target="_blank"
               className="
                 px-5 py-2 bg-[#9EFF00] text-black rounded-full font-medium
@@ -425,7 +425,7 @@ export default function Page() {
     </p>
 
     <a
-      href="https://wa.me/628xxxx"
+      href="https://wa.me/62859126469320"
       target="_blank"
       className="
         inline-block px-7 py-3 bg-black text-white rounded-full font-medium
@@ -663,7 +663,7 @@ export default function Page() {
               </a>
 
               <a
-                href="https://wa.me/628xxxx"
+                href="https://wa.me/62859126469320"
                 className="px-5 py-3 border border-black/20 rounded-full hover:bg-black hover:text-white transition"
               >
                 Hubungi Kami
@@ -755,7 +755,7 @@ export default function Page() {
       </p>
 
       <a
-        href="https://wa.me/628xxxx?text=Halo%20saya%20ingin%20konsultasi%20produk%20ukiran"
+        href="https://wa.me/62859126469320?text=Halo%20saya%20ingin%20konsultasi%20produk%20ukiran"
         target="_blank"
         className="inline-block px-6 py-3 bg-[#9EFF00] text-black rounded-full font-medium 
                    hover:scale-105 transition shadow-lg"

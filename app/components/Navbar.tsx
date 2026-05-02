@@ -17,27 +17,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
-
     const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 40);
 
-          let current = "home";
-          LINKS.forEach(({ id }) => {
-            const el = document.getElementById(id);
-            if (el) {
-              const top = el.offsetTop - 120;
-              if (window.scrollY >= top) current = id;
-            }
-          });
-          setActive(current);
-
-          ticking = false;
-        });
-        ticking = true;
-      }
+      let current = "home";
+      LINKS.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop - 120;
+          if (window.scrollY >= top) current = id;
+        }
+      });
+      setActive(current);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -50,94 +41,74 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-center pointer-events-none">
-      <div
-        className={`
-          pointer-events-auto w-[96%] max-w-7xl
-          transition-all duration-500
-          ${scrolled ? "mt-3" : "mt-2"}
-        `}
-      >
+    <nav className="fixed top-0 left-0 w-full z-50 flex justify-center">
+      <div className="w-[95%] max-w-6xl mt-2">
+
+        {/* CONTAINER */}
         <div
           className={`
-            flex items-center justify-between
-            px-4 md:px-7
-            transition-all duration-500
+            flex items-center justify-between w-full
+            px-4 py-2 rounded-full
+            transition-all duration-300
             ${
               scrolled
-                ? "py-2 bg-white/80 backdrop-blur-2xl rounded-full border border-black/10 shadow-lg"
-                : "py-3 bg-white/60 backdrop-blur-xl rounded-full"
+                ? "bg-white/80 backdrop-blur-xl shadow-md border border-black/10"
+                : "bg-white/60 backdrop-blur"
             }
           `}
         >
+
           {/* LOGO */}
           <button
             onClick={() => goTo("home")}
-            className="flex items-center gap-2 text-black font-semibold"
+            className="flex items-center gap-2 font-semibold"
           >
-            <img src="/logo.png" className="w-7 h-7 md:w-6 md:h-6" />
-
-            {/* 🔥 SEKARANG MUNCUL DI MOBILE */}
-            <span className="text-sm md:text-base tracking-wide">
+            <img src="/logo.png" className="w-6 h-6" />
+            <span className="text-xs md:text-sm">
               Galeri Ukir
             </span>
           </button>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-10 text-sm font-medium text-black/70">
+          <div className="hidden lg:flex items-center gap-8 text-sm text-black/70">
             {LINKS.map((l) => (
               <button
                 key={l.id}
                 onClick={() => goTo(l.id)}
-                className="relative group"
+                className={`transition ${
+                  active === l.id ? "text-black font-medium" : ""
+                }`}
               >
-                <span
-                  className={`transition ${
-                    active === l.id
-                      ? "text-black"
-                      : "group-hover:text-black"
-                  }`}
-                >
-                  {l.label}
-                </span>
-
-                <span
-                  className={`
-                    absolute left-0 -bottom-1 h-[2px] bg-[#9EFF00]
-                    transition-all duration-300
-                    ${
-                      active === l.id
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
-                    }
-                  `}
-                />
+                {l.label}
               </button>
             ))}
           </div>
 
           {/* RIGHT */}
           <div className="flex items-center gap-2">
-            {/* ORDER */}
+
+            {/* ORDER (HIDDEN DI MOBILE BIAR RAPI) */}
             <a
               href={waLink}
               target="_blank"
               className="
-                text-xs md:text-sm px-4 md:px-5 py-2 rounded-full font-medium
+                hidden sm:inline-flex
+                text-xs md:text-sm
+                px-4 py-1.5
+                rounded-full
                 bg-[#9EFF00] text-black
+                font-medium
                 shadow-[0_0_15px_rgba(158,255,0,0.5)]
-                hover:shadow-[0_0_30px_rgba(158,255,0,0.8)]
-                hover:scale-105
-                transition-all duration-300
+                hover:scale-105 transition
               "
             >
               Order
             </a>
 
-            {/* MENU MOBILE */}
+            {/* HAMBURGER */}
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden text-black text-xl"
+              className="lg:hidden text-xl"
             >
               ☰
             </button>
@@ -147,19 +118,18 @@ export default function Navbar() {
         {/* MOBILE MENU */}
         <div
           className={`
-            md:hidden overflow-hidden
-            transition-all duration-500
-            ${open ? "max-h-60 mt-3" : "max-h-0"}
+            lg:hidden overflow-hidden
+            transition-all duration-300
+            ${open ? "max-h-64 mt-2" : "max-h-0"}
           `}
         >
-          <div className="bg-white/90 backdrop-blur-xl rounded-2xl border border-black/10 shadow-lg p-5 flex flex-col gap-4 text-center">
+          <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-4 text-center">
+
             {LINKS.map((l) => (
               <button
                 key={l.id}
                 onClick={() => goTo(l.id)}
-                className={`text-sm ${
-                  active === l.id ? "text-black font-semibold" : "text-black/70"
-                }`}
+                className="text-sm"
               >
                 {l.label}
               </button>
@@ -168,12 +138,13 @@ export default function Navbar() {
             <a
               href={waLink}
               target="_blank"
-              className="mt-2 bg-[#9EFF00] text-black py-2 rounded-full font-medium"
+              className="bg-[#9EFF00] py-2 rounded-full text-sm font-medium"
             >
               Order Sekarang
             </a>
           </div>
         </div>
+
       </div>
     </nav>
   );

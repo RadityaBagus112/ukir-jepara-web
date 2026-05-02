@@ -200,22 +200,7 @@ export default function RatingSection() {
         </form>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {filtered.slice(1).map((r, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="bg-white p-5 rounded-xl shadow"
-            >
-              <p className="text-yellow-400">
-                {"⭐".repeat(r.rating)}
-              </p>
-              <p className="text-sm my-2">{r.text}</p>
-              <p className="font-medium">{r.name}</p>
-            </motion.div>
-          ))}
-        </div>
-
+        
       </div>
     </section>
   );
